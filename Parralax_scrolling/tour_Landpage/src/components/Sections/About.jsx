@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import './About.css';
 
 const About = ({ background }) => {
@@ -35,32 +36,32 @@ const About = ({ background }) => {
     {
       title: 'History',
       image: '/assets/history.jpg',
-      link: '#'
+      link: '/history' // Link to History page
     },
     {
       title: 'Culture',
       image: '/assets/culture.jpg',
-      link: '#'
+      link: '/culture' // Link to Culture page
     },
     {
       title: 'Art and Craft',
       image: '/assets/art-craft.jpg',
-      link: '#'
+      link: '/art-and-craft' // Link to Art and Craft page
     },
     {
       title: 'Taste',
       image: '/assets/taste.jpg',
-      link: '#'
+      link: '/taste' // Link to Taste page
     },
     {
       title: 'Tribe',
       image: '/assets/tribe.jpg',
-      link: '#'
+      link: '/tribe' // Link to Tribe page
     },
     {
       title: 'Literature',
       image: '/assets/literature.jpg',
-      link: '#'
+      link: '/literature' // Link to Literature page
     }
   ];
 
@@ -74,6 +75,7 @@ const About = ({ background }) => {
 
   return (
     <section
+      ref={sectionRef}
       className="section about-section"
       style={{ backgroundImage: `url(/assets/${background})` }}
     >
@@ -90,10 +92,10 @@ const About = ({ background }) => {
           style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
         >
           {cards.map((card, index) => (
-            <div key={index} className="card">
+            <Link to={card.link} key={index} className="card">
               <img src={card.image} alt={card.title} />
               <h3>{card.title}</h3>
-            </div>
+            </Link>
           ))}
         </div>
 
